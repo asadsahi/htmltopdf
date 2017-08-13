@@ -1,6 +1,11 @@
-﻿@{
+﻿@using html2pdf.Model
+@model IEnumerable<Person>
+
+@{
     ViewData["Title"] = "Contact";
 }
+
+
 <h2>@ViewData["Title"].</h2>
 <h3>@ViewData["Message"]</h3>
 
@@ -15,3 +20,31 @@
     <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
     <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
 </address>
+
+<h1>List of people</h1>
+
+<table class="table table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Date of birth</th>
+    </tr>
+
+    @if (Model != null)
+    {
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.Name</td>
+                <td>@p.Age</td>
+                <td>@p.DOB.ToString()</td>
+            </tr>
+        }
+
+    }
+
+</table>
+
+<p>Trademark company</p>

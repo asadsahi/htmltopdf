@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using html2pdf.Services;
 
 namespace html2pdf
 {
@@ -28,6 +29,8 @@ namespace html2pdf
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            services.AddNodeServices();// this is in package Microsoft.AspNetCore.NodeServices
+            services.AddScoped<IViewRenderService, ViewRenderService>();
             services.AddMvc();
         }
 
